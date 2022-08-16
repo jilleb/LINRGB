@@ -1,0 +1,52 @@
+//------------------------------------------------
+//--- 010 Editor v12.0.1 Binary Template
+//
+//      File: frame.bt
+//   Authors: Jille
+//   Version: 0.1
+//   Purpose: Parsing LIN frames, used for RGB
+//            Ambient lighting
+//  Category: Automotive / Reverse Engineering
+//   History: 0.1   Initial version
+//------------------------------------------------
+
+// Baudrate:    19200
+// LIN version: 2.0
+
+// LIN FRAME:
+double signalAddress;
+// range from 0 - 32767
+double signalAddressingType;   
+// 0 :  Single Address
+// 1 :  Group Address
+
+
+
+double signalColorRed;        
+// range from 0-255
+double signalColorGreen;      
+// range from 0-255 
+double signalColorBlue;       
+// range from 0-255
+
+double signalIntensity; 
+// range from  0-100%
+// 126 = init
+// 127 = error
+
+byte signalIntensityNormalization;
+// 0: No  normalizatoin
+// 1: Normalization of the intensity
+
+byte signalRampTime[6];
+// from 0-15, in steps of 0.25 seconds
+
+byte signalMagic; //also known as "Special Functions" 
+// 0: No Special functions
+// 1: Crash
+// 2: Showroom mode
+// 3: Actuator test
+// 4: Prediction (e.g. FAS warning)
+// 5: Reserved
+// 6: Reserved
+// 7: Reserved
