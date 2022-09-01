@@ -1,0 +1,40 @@
+//------------------------------------------------
+//--- 010 Editor v12.0.1 Binary Template
+//
+//      File: 
+//   Authors: 
+//   Version: 
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+
+local int amount_of_frames = 900;
+local int display_int_RGB = 0;
+
+struct
+{
+	byte sync_field[2] < bgcolor = cWhite, fgcolor=cBlack > ;	//00 55
+	byte frame_id: 6;
+	byte frame_id_parity: 2;
+	if (frame_id == 0x15)
+	{
+        byte data2;
+        byte data3;
+        byte red;
+        byte green;
+        byte blue;
+        display_int_RGB = red + (green*0x100) + (blue *0x10000); // for displaying purposes, 010 editor needs BGR?!
+        byte intensity <bgcolor=display_int_RGB>;
+        byte data8;
+        byte data9;
+        byte CRC8;   
+	} else {
+       while (ReadShort(FTell()) != 21760){
+            byte data;
+        }
+    }   
+}
+frame[amount_of_frames] < optimize = false > ;
